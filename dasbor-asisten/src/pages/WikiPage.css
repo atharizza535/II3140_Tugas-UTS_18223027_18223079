@@ -1,0 +1,56 @@
+/* src/pages/WikiPage.css */
+.wiki-container {
+    display: flex;
+    gap: 1.5rem;
+    min-height: 60vh;
+}
+
+.wiki-sidebar {
+    flex: 1;
+    border-right: 1px solid #eee;
+    padding-right: 1.5rem;
+}
+
+.wiki-sidebar h4 {
+    margin-top: 0;
+}
+
+.wiki-sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.wiki-sidebar li {
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.wiki-sidebar li:hover {
+    background-color: #f4f7f6;
+}
+
+.wiki-sidebar li.active {
+    background-color: #007bff;
+    color: white;
+}
+
+.wiki-content {
+    flex: 3;
+}
+
+/* Styling untuk konten markdown */
+.wiki-content h3 {
+    margin-top: 0;
+}
+.wiki-content pre {
+    background-color: #f4f7f6;
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+.wiki-content code {
+    background-color: #f4f7f6;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}

@@ -1,0 +1,27 @@
+/* src/pages/DashboardPage.css */
+.announcement-list {
+    list-style: none;
+    padding: 0;
+}
+
+.announcement-item {
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+}
+
+.announcement-item:last-child {
+    border-bottom: none;
+}
+
+.announcement-item h3 {
+    margin: 0 0 0.5rem 0;
+    color: #007bff;
+}
+
+.announcement-item p {
+    margin: 0 0 0.5rem 0;
+}
+
+.announcement-item small {
+    color: #888;
+}

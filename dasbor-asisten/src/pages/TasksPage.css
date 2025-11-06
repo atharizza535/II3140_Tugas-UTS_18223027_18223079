@@ -1,0 +1,65 @@
+/* src/pages/TasksPage.css */
+
+.add-task-form {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.add-task-form input {
+    flex-grow: 1;
+    margin-right: 0.5rem;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.task-board {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.task-column {
+    flex: 1;
+    background-color: #f4f7f6; /* Warna kolom */
+    border-radius: 8px;
+    padding: 1rem;
+    min-width: 250px; /* Lebar minimum */
+}
+
+.task-column h3 {
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #ddd;
+}
+
+.task-list {
+    min-height: 100px; /* Tinggi minimum agar tidak kolaps */
+}
+
+.task-item {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 0.75rem;
+    cursor: grab; /* Indikasi bisa di-drag */
+}
+
+.task-item p {
+    margin: 0;
+}
+
+.empty-task {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}
+
+/* Responsivitas untuk papan tugas */
+@media (max-width: 768px) {
+    .task-board {
+        flex-direction: column; /* Ubah jadi vertikal di mobile */
+    }
+}
