@@ -5,19 +5,22 @@ const cors = require("cors");
 
 
 let serviceAccount;
+
 // Cek jika kita punya environment variable (ini akan ada di Netlify)
 if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    // Ambil JSON dari environment variable
     serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 } else {
-    // Jika tidak, kita pakai file lokal (untuk 'npm run dev')
+    // Jika tidak ada (kita di lokal), pakai file
     serviceAccount = require("./serviceAccountKey.json");
 }
 
 // 2. Inisialisasi Firebase Admin (Hanya jika belum ada)
+// Ini mencegah error saat serverless function di-reuse
 if (admin.apps.length === 0) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
-      databaseURL: "https://dasbor-asisten.firebaseio.com" 
+      databaseURL: "https://dasbor-asisten.firebaseio.com",
     });
 }
 
