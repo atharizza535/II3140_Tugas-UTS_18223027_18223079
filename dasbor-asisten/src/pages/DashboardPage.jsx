@@ -15,7 +15,8 @@ function DashboardPage() {
                 setLoading(true);
                 // Panggil endpoint backend /announcements
                 const response = await api.get('/announcements');
-                setAnnouncements(response.data);
+                // Pastikan data yang masuk adalah array, jika tidak, gunakan array kosong
+                setAnnouncements(Array.isArray(response.data) ? response.data : []);
             } catch (error) {
                 console.error("Gagal mengambil pengumuman:", error);
             } finally {
