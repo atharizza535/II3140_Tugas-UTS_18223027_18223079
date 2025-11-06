@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Ganti dengan URL backend Anda setelah di-deploy
 // (misal: Cloud Function, AWS Lambda, VM) [sumber: 23]
-const API_BASE_URL = '/.netlify/functions/api';
+const API_BASE_URL = '/.netlify/function/api';
 
 const api = axios.create({
     baseURL: API_BASE_URL,
