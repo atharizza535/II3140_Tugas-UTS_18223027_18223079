@@ -1,10 +1,18 @@
-# Konfigurasi Build Frontend (Vite)
 [build]
-  command = "npm run build"
-  publish = "dist"
-  functions = "netlify/functions" # <-- Beritahu Netlify di mana backend Anda
+  # Beri tahu Netlify untuk masuk ke folder ini
+  base = "dasbor-asisten"
 
-# Aturan agar React Router (deep links) berfungsi
+  # Perintah build
+  command = "npm run build"
+
+  # Folder output build
+  publish = "dist"
+
+  # PASTIKAN INI COCOK DENGAN NAMA FOLDER ANDA:
+  # 'function' (singular) BUKAN 'functions' (plural)
+  functions = "netlify/function"
+
+# Aturan redirect untuk React Router
 [[redirects]]
   from = "/*"
   to = "/index.html"
