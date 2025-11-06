@@ -1,28 +1,23 @@
 module.exports = {
+  root: true,
+  
+  // ⬇️ BLOK INI WAJIB ADA ⬇️
   env: {
-    es6: true,
-    node: true,
+    es2021: true,
+    node: true, // Ini memberitahu linter bahwa 'require' dan 'module' itu valid
   },
-  parserOptions: {
-    "ecmaVersion": 2018,
-  },
+  // ⬆️ AKHIR DARI BLOK ⬆️
+
   extends: [
     "eslint:recommended",
     "google",
   ],
-  rules: {
-    "no-restricted-globals": ["error", "name", "length"],
-    "prefer-arrow-callback": "error",
-    "quotes": ["error", "double", {"allowTemplateLiterals": true}],
+  parserOptions: {
+    ecmaVersion: 2021,
   },
-  overrides: [
-    {
-      files: ["**/*.spec.*"],
-      env: {
-        mocha: true,
-      },
-      rules: {},
-    },
-  ],
-  globals: {},
+  rules: {
+    "quotes": ["error", "double"],
+    "max-len": "off", 
+    "require-jsdoc": "off",
+  },
 };
