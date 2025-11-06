@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Ganti dengan URL backend Anda setelah di-deploy
 // (misal: Cloud Function, AWS Lambda, VM) [sumber: 23]
-const API_BASE_URL = 'http://127.0.0.1:5001/dasbor-asisten/us-central1/api'; // Ganti ini nanti
+const API_BASE_URL = '/.netlify/functions/api';
 
 const api = axios.create({
     baseURL: API_BASE_URL,

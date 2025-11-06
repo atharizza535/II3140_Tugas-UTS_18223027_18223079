@@ -1,0 +1,11 @@
+# Konfigurasi Build Frontend (Vite)
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions" # <-- Beritahu Netlify di mana backend Anda
+
+# Aturan agar React Router (deep links) berfungsi
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

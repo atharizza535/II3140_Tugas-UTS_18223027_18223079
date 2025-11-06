@@ -1,4 +1,4 @@
-const functions = require("firebase-functions");
+const serverless = require("serverless-http");
 const admin = require("firebase-admin");
 const express = require("express");
 const cors = require("cors");
@@ -12,7 +12,7 @@ admin.initializeApp({
   // ⬇️ TAMBAHKAN BARIS INI ⬇️
   // Ini secara eksplisit memberitahu admin untuk menggunakan database
   // yang terkait dengan service account ini.
-  databaseURL: `https://dasbor-asisten.firebaseio.com` 
+  databaseURL: "https://dasbor-asisten.firebaseio.com"
 });
 
 // 3. 'db' sekarang memiliki akses admin penuh ke database live
@@ -165,4 +165,4 @@ app.get("/lab/quiz/:quizId", async (req, res) => {
 // --- AKHIR ENDPOINT API ---
 
 // 5. Ekspor aplikasi Express sebagai Cloud Function bernama 'api'
-exports.api = functions.https.onRequest(app);
+module.exports.handler = serverless(app);

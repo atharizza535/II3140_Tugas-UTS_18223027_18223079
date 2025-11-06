@@ -23,4 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-/functions/serviceAccountKey.json
+/netlify/functions/serviceAccountKey.json

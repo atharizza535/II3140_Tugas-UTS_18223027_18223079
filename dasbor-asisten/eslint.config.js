@@ -5,9 +5,12 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  // Abaikan folder build dan node_modules di kedua proyek
+  globalIgnores(['dist', 'functions/node_modules']),
+
+  // 1. Konfigurasi untuk FRONTEND (React/Vite)
   {
-    files: ['**/*.{js,jsx}'],
+    files: ['src/**/*.{js,jsx}'], // <-- Hanya berlaku untuk folder 'src'
     extends: [
       js.configs.recommended,
       reactHooks.configs['recommended-latest'],
@@ -15,7 +18,7 @@ export default defineConfig([
     ],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: globals.browser, // <-- Aturan untuk Browser
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
@@ -26,4 +29,19 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
+
+  // 2. Konfigurasi untuk BACKEND (Firebase Functions)
+  {
+    files: ['functions/**/*.js'], // <-- Hanya berlaku untuk folder 'functions'
+    languageOptions: {
+      ecmaVersion: 2021,
+      globals: globals.node, // <-- Aturan untuk Node.js (mengenali require, module, dll)
+      sourceType: 'commonjs', // <-- Penting: menandakan ini file CommonJS
+    },
+    rules: {
+      "quotes": ["error", "double"],
+      "max-len": "off",
+      "require-jsdoc": "off",
+    },
+  }
 ])
