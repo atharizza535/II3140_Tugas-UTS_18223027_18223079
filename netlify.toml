@@ -1,9 +1,18 @@
 [build]
+  # Beri tahu Netlify untuk masuk ke folder ini
   base = "dasbor-asisten"
-  command = "npm run build"
-  publish = "dist"
-  functions = "dasbor-asisten/netlify/function" # <-- INI YANG BENAR
 
+  # Perintah build
+  command = "npm run build"
+
+  # Folder output build
+  publish = "dist"
+
+  # INI YANG BENAR:
+  # Path ini relatif terhadap 'base' di atas
+  functions = "netlify/function"
+
+# Aturan redirect untuk React Router
 [[redirects]]
   from = "/*"
   to = "/index.html"
