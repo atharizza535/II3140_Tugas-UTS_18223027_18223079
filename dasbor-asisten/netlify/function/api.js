@@ -3,17 +3,24 @@ const admin = require("firebase-admin");
 const express = require("express");
 const cors = require("cors");
 
-// 1. Impor file kunci 
-const serviceAccount = require("./serviceAccountKey.json");
 
-// 2. Inisialisasi Firebase Admin
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  // ⬇️ TAMBAHKAN BARIS INI ⬇️
-  // Ini secara eksplisit memberitahu admin untuk menggunakan database
-  // yang terkait dengan service account ini.
-  databaseURL: "https://dasbor-asisten.firebaseio.com"
-});
+let serviceAccount;
+// Cek jika kita punya environment variable (ini akan ada di Netlify)
+if (process.env.FIREBASE_SERVICE_ACCOUNT) {
+    serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+} else {
+    // Jika tidak, kita pakai file lokal (untuk 'npm run dev')
+    serviceAccount = require("./serviceAccountKey.json");
+}
+
+// 2. Inisialisasi Firebase Admin (Hanya jika belum ada)
+if (admin.apps.length === 0) {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      databaseURL: "https://dasbor-asisten.firebaseio.com" 
+    });
+}
+
 
 // 3. 'db' sekarang memiliki akses admin penuh ke database live
 const db = admin.firestore();
