@@ -173,6 +173,24 @@ app.get("/lab/quiz/:quizId", async (req, res) => {
   }
 });
 
+// --- TEMPORARY DEBUG ENDPOINT ---
+app.get("/health", (req, res) => {
+  try {
+    // Check if the environment variable EXISTS (but don't log its value)
+    const hasServiceAccount = !!process.env.FIREBASE_SERVICE_ACCOUNT;
+    
+    res.status(200).json({
+      status: "API is running!",
+      serviceAccountLoaded: hasServiceAccount,
+      message: hasServiceAccount 
+        ? "Environment variable FIREBASE_SERVICE_ACCOUNT was found."
+        : "!!! WARNING: FIREBASE_SERVICE_ACCOUNT environment variable is MISSING. !!!"
+    });
+  } catch (error) {
+    res.status(500).json({ status: "API crashed", error: error.message });
+  }
+});
+
 // --- AKHIR ENDPOINT API ---
 
 // 5. Ekspor aplikasi Express sebagai Cloud Function bernama 'api'
